@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إلتزامات قائمة حزب العمال للمجلس الشعبي الولائي الجزائر - رقم 16</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c8102e;
+      --primary-dark: #9e0b22;
+      --dark: #1a1a1a;
+      --light: #f4f5f7;
+      --white: #ffffff;
+      --gray-border: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', Tahoma, Arial, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.75;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      border-bottom: 5px solid var(--dark);
+    }
+
+    .badge-num {
+      display: inline-block;
+      background-color: var(--white);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 2rem;
+      padding: 2px 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    }
+
+    .party-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .party-sub {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 8px;
+      background: rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 6px;
+    }
+
+    .election-date {
+      font-size: 0.95rem;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .intro-box {
+      background-color: var(--white);
+      border-right: 5px solid var(--primary);
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 210px;
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-toggle-all {
+      background-color: var(--dark);
+      color: var(--white);
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .btn-toggle-all:hover {
+      background-color: #333;
+    }
+
+    .accordion-item {
+      background-color: var(--white);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      overflow: hidden;
+      border: 1px solid var(--gray-border);
+      transition: border-color 0.2s;
+    }
+
+    .accordion-item.active {
+      border-color: var(--primary);
+    }
+
+    .accordion-header {
+      width: 100%;
+      background-color: var(--white);
+      border: none;
+      padding: 15px 18px;
+      text-align: right;
+      font-family: inherit;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s;
+    }
+
+    .accordion-header:hover {
+      background-color: #fcfcfc;
+    }
+
+    .accordion-item.active .accordion-header {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .num-circle {
+      background-color: #eee;
+      color: var(--dark);
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .accordion-item.active .num-circle {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+
+    .icon-arrow {
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.25s ease;
+    }
+
+    .accordion-item.active .icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 18px 20px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 1.05rem;
+      color: #2b2b2b;
+      background-color: #fff;
+      text-align: justify;
+    }
+
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 35px;
+      color: #555;
+      font-size: 0.9rem;
+      padding: 0 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge-num">16</div>
+  <div class="party-title">حزب العمال</div>
+  <div class="party-sub">PARTI DES TRAVAILLEURS | ⴰⴽⴰⴱⴰⵔ ⵏ ⵢⵉخدامⵏ</div>
+  <h1>إلتزامات قائمة حزب العمال للمجلس الشعبي الولائي الجزائر</h1>
+  <div class="election-date">الإنتخابات المحلية ليوم 28 نوفمبر 2026</div>
+</header>
+
+<div class="container">
+  <div class="intro-box">
+    بصفتها عاصمة الجزائر وواجهتها، من المفروض أن تكون ولاية الجزائر في أعلى درجة من الرقي والتحضّر وعليه، نحن مترشحات ومترشحي حزب العمال، من عمال وشباب ومتقاعدين، نلتزم بالنضال من أجل تجسيد المطالب التالية :
+  </div>
+
+  <div class="controls">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث في الإلتزامات (مثال: النقل، السكن، الصحة، الشباب...)">
+    <button id="toggleAllBtn" class="btn-toggle-all">فتح الكل</button>
+  </div>
+
+  <div id="accordionList"></div>
+</div>
+
+<footer>
+  حزب العمال (PT) - القائمة رقم 16 | الإنتخابات المحلية 28 نوفمبر 2026
+</footer>
+
+<script>
+  const commitments = [
+    { num: 1, title: "الإلتزام الأول", text: "سوف نناضل من أجل مخطط معماري ولائي يحافظ على طابع وشخصية المدينة وتراثها وتاريخها، مما يعني محاربة تراخيص البناء التي تشوّهها عبر منح تراخيص تشييد بنايات عالية تكسّر وحدتها المعمارية بحثا عن الربح." },
+    { num: 2, title: "الإلتزام الثاني", text: "نلتزم بالنضال من أجل توفير كامل الشروط المادية والبشرية لضمان نظافة العاصمة وبهاء مظهرها بكل بلدياتها عبر تخصيص الميزانية الكافية." },
+    { num: 3, title: "الإلتزام الثالث", text: "نلتزم بالنضال من أجل صيانة كل الطرقات وتوفير شبكة إنارة عمومية شاملة." },
+    { num: 4, title: "الإلتزام الرابع", text: "نلتزم بالنضال من أجل حماية البيئة من كل أسباب التلوث عبر تجفيف مواطنها ومراقبة نشاط مؤسسات الردم التقني وتوفير الشروط المادية والبشرية الضرورية، وحماية الغابات وصيانتها والسهر على نظافة الشواطئ وتجريم تلويثها." },
+    { num: 5, title: "الإلتزام الخامس", text: "نلتزم بالنضال من أجل إنشاء مؤسسات ولائية وبلدية مكلفة بضمان شروط العيش الكريم في كل المجالات." },
+    { num: 6, title: "الإلتزام السادس", text: "وقد تأكد أن التقلب المناخي سوف يتفاقم أكثر وللوقاية من الكوارث (حرائق، فيضانات ...) نلتزم بالنضال من أجل تجهيز الولاية والبلديات بوسائل (حضائر) التدخل السريع وتوفير الميزانيات الضرورية." },
+    { num: 7, title: "الإلتزام السابع", text: "نلتزم بالنضال من أجل تقوية ميزانية التضامن الإجتماعي للتكفل بالفئات المنجرحة من نساء وأطفال ومسنين وذوي الإعاقات." },
+    { num: 8, title: "الإلتزام الثامن", text: "النضال من أجل ربط البلديات بالمدارس فيما يتعلق بضمان تسجيل كل الأطفال إجباريا عبر خلق مناصب لمسعفات إجتماعية تكلف بالمعاينة والرقابة والإخطار." },
+    { num: 9, title: "الإلتزام التاسع", text: "النضال من اجل ترسيخ الثقافة في المدرسة عبر برنامج ثقافي للسماح للمتمدرسين بالتعرف على المعالم الثقافية والتاريخية المتواجدة في العاصمة في زيارات منظمة مجانية." },
+    { num: 10, title: "الإلتزام العاشر", text: "النضال من اجل ضمان توزيع عادل للماء الشروب يغطي حاجيات كل الساكنة." },
+    { num: 11, title: "الإلتزام الحادي عشر", text: "النضال من اجل الانصاف والمعادلة فيما يخص توزيع الميزانيات على البلديات." },
+    { num: 12, title: "الإلتزام الثاني عشر", text: "النضال من اجل اعطاء قطاعات الصحة والتربية الوطنية والتكوين المهني الأولوية في توزيع الميزانيات الولائية للتكفل بكل النقائص وتثبيت الحقوق الدستورية في العلاج والتعليم." },
+    { num: 13, title: "الإلتزام الثالث عشر", text: "النضال من اجل تحسين شبكة النقل الحضري والقضاء على نقاط الضعف والاكتظاظ وضبط النقل في سيارات الأجرة." },
+    { num: 14, title: "الإلتزام الرابع عشر", text: "النضال من اجل صياغة سياسة لضبط ايجار السكنات لدى الخواص تضع حدا للمضاربة اخذا بعين الاعتبار القدرة الشرائية لأغلبية الساكنة وللمقاييس المعمول بها في الدول المتقدمة." },
+    { num: 15, title: "الإلتزام الخامس عشر", text: "النضال من اجل تخصيص مراكز ايواء للمواطنين الشباب والعمال الذين يأتون للعاصمة في اطار مناصب عمل." },
+    { num: 16, title: "الإلتزام السادس عشر", text: "النضال من اجل توفير فضاءات ووسائل الترفيه للشباب وتخصيص شقق صغيرة (ستوديوهات) لمن يرغبون في الزواج، أو تخصيص دعم مالي للإيجار بالنسبة لذوي الدخل الضعيف، وتقوية الفضاءات الرياضية." },
+    { num: 17, title: "الإلتزام السابع عشر", text: "النضال من أجل فتح دور تقاعد مجهزة طبيا وثقافيا للمتقاعدين الذين يرفضون ان يكونوا عالة على عائلتهم او يعيشون وحدهم." },
+    { num: 18, title: "الإلتزام الثامن عشر", text: "الالتزام بالنضال من اجل الحفاظ على المساحات الخضراء وصيانتها وتوفير الشروط التي تشجع الساكنة على ارتيادها." },
+    { num: 19, title: "الإلتزام التاسع عشر", text: "النضال من اجل توفير النقل المدرسي والجامعي بالتنسيق مع مديريات التربية والجامعات." },
+    { num: 20, title: "الإلتزام العشرون", text: "النضال من اجل فتح مكتبات في البلديات لتشجيع المطالعة وفتح النقاشات الفكرية وإعادة فتح قاعات السينما في كل البلديات في إطار برنامج ثقافي يحمي المجتمع من الإنغلاق والتعصّب، وتقوية ميزانية قطاع الثقافة بصفة عامة لإعطائها دفعا للوقاية من المخططات الإجرامية الرامية لزرع الفتنة." },
+    { num: 21, title: "الإلتزام الحادي والعشرون", text: "النضال من اجل تحسين القدرة الشرائية عبر تسقيف اسعار البضائع ذات الاستهلاك الواسع وفتح محلات تجارية عمومية وفتح اسواق اسبوعية عمومية." },
+    { num: 22, title: "الإلتزام الثاني والعشرون", text: "النضال من اجل حماية ذوي الاعاقات والمرضى عبر تخصيص ميزانية كافية وفتح ممرات امام المحلات والعيادات وفي الأرصفة مخصصة لذوي الاعاقات الذين يتنقلون بكراسي متحركة." },
+    { num: 23, title: "الإلتزام الثالث والعشرون", text: "النضال من أجل ترسيخ التكفل بالأطفال المصابين بطيف التوحد في إطار إدماجهم إجتماعيا عبر فتح مناصب لمساعدات ومساعدين وتخصيص ميزانية تغطي الحاجيات، بما فيها صرف مساعدات (منح) للعائلات." },
+    { num: 24, title: "الإلتزام الرابع والعشرون", text: "تسطير ميزانية كافية للطفولة المسعفة، تشمل كل جوانب الرعاية." },
+    { num: 25, title: "الإلتزام الخامس والعشرون", text: "السعي من اجل ترقية الاماكن التراثية والسياحية، ترميم المواقع والبنايات الهشة وتنظيم إشتغال التراث." },
+    { num: 26, title: "الإلتزام السادس والعشرون", text: "النضال من اجل إنشاء شرطة بلدية تكلف بحماية المدارس والاطفال والمنشآت العمومية تكملة لمهام أجهزة وعناصر الأمن الوطني." },
+    { num: 27, title: "الإلتزام السابع والعشرون", text: "النضال من اجل محاربة كل اشكال التطرف والعنف الحضري والمساس بالحياة الشخصية وتجريمها عبر قرارات وإجراءات صارمة." },
+    { num: 28, title: "الإلتزام الثامن والعشرون", text: "النضال من اجل فتح ملاجئ للحيوانات الأليفة المشردة وتجريم قتلها خارج الحالات التي يقرها البياطرة." },
+    { num: 29, title: "الإلتزام التاسع والعشرون", text: "النضال من اجل فتح مركبات عمومية لممارسة الرياضة واللياقة البدنية للنساء والرجال كجزء من برنامج الصحة العمومية." },
+    { num: 30, title: "الإلتزام الثلاثون", text: "النضال من اجل ترميم البنايات الهشة والواجهات." },
+    { num: 31, title: "الإلتزام الحادي والثلاثون", text: "مضاعفة عدد المراحيض العمومية والسهر على فتحها ونظافتها." },
+    { num: 32, title: "الإلتزام الثاني والثلاثون", text: "النضال من اجل تسطير برنامج بلدي لفتح رياض الاطفال ودور حضانة عمومية ومجانية." },
+    { num: 33, title: "الإلتزام الثالث والثلاثون", text: "النضال من اجل التكفل بالأشخاص المدمنين على المخدرات والمهلوسات ضحايا عصابات الإجرام عبر برنامج شامل يتمحور حول فتح مراكز طبية بالعدد الكافي." },
+    { num: 34, title: "الإلتزام الرابع والثلاثون", text: "النضال من اجل اقرار تجريم رمي النفايات في الشارع وخارج المواقع المخصصة لها ووضع حاويات امام كل العمارات وتقوية المؤسسات العمومية المكلفة برفع القمامة." },
+    { num: 35, title: "الإلتزام الخامس والثلاثون", text: "النضال من اجل تقوية الإجراءات الخاصة بإلزام تجديد وتقوية حظيرة النقل العمومي." },
+    { num: 36, title: "الإلتزام السادس والثلاثون", text: "النضال من اجل سياسة تلزم التجار بضمان شروط النظافة في المحلات والمطاعم والمقاهي." },
+    { num: 37, title: "الإلتزام السابع والثلاثون", text: "النضال من اجل فتح مراكز ايواء للاجئين الافارقة وتسوية وضعيتهم تجسيدا لتوجّه الدولة الرامي لتوطيد العلاقات مع الدول الإفريقية الشقيقة." },
+    { num: 38, title: "الإلتزام الثامن والثلاثون", text: "النضال من اجل ترقية قطاع الفندقة كركن اساسي للنهوض بالسياحة وحماية عمّاله من الاستغلال والظلم ومراجعة تسيير الفنادق العمومية بما يسمح لها بتطوير الخدمات." },
+    { num: 39, title: "الإلتزام التاسع والثلاثون", text: "النضال من اجل مساعده الفلاحين والحرفيين الذين يشكلون مكونة اساسية في الاقتصاد الوطني، والسهر على منع تحويل الأراضي الفلاحية العمومية، وحماية التجار الصغار من تسلط اسواق الجملة." },
+    { num: 40, title: "الإلتزام الأربعون", text: "النضال من اجل مضاعفة عدد المقاعد العمومية، وضبط مواقف الحافلات لحماية الركاب." },
+    { num: 41, title: "الإلتزام الحادي والأربعون", text: "تجهيز الاحياء الجديدة (AADL, LSP, LPA) بالمنشآت القاعدية (مدارس، اكماليات، مستوصفات، دور حضانة، ورياض الاطفال، طرقات ومحلات تجارية ومساحات خضراء ووسائل النقل ومراكز الشرطة، ... إلخ)." },
+    { num: 42, title: "الإلتزام الثاني والأربعون", text: "تجريم كل اشكال التحرش والتنمر ضد النساء والبنات." },
+    { num: 43, title: "الإلتزام الثالث والأربعون", text: "النضال من أجل حماية الممتلكات العامة والخاصة التابعة للولاية والبلديات عبر تجريم تحويلها ونهبها." },
+    { num: 44, title: "الإلتزام الرابع والأربعون", text: "مكافحة كل أشكال نهب المال العام والفساد." },
+    { num: 45, title: "الإلتزام الخامس والأربعون", text: "السهر على إحترام الديمقراطية البلدية من قِبل المجالس المحلية المنتخبة وعدم التدخل في صلاحياتها." }
+  ];
+
+  const listEl = document.getElementById('accordionList');
+  const searchInput = document.getElementById('searchInput');
+  const toggleAllBtn = document.getElementById('toggleAllBtn');
+  let allExpanded = false;
+
+  function renderCommitments(filterText = '') {
+    listEl.innerHTML = '';
+    const query = filterText.trim();
+
+    commitments.forEach(item => {
+      if (query && !item.title.includes(query) && !item.text.includes(query) && !String(item.num).includes(query)) {
+        return;
+      }
+
+      const card = document.createElement('div');
+      card.className = 'accordion-item' + (query ? ' active' : '');
+
+      card.innerHTML = `
+        <button class="accordion-header" type="button">
+          <span class="title-wrap">
+            <span class="num-circle">${item.num}</span>
+            <span>♦ ${item.title}</span>
+          </span>
+          <span class="icon-arrow">▾</span>
+        </button>
+        <div class="accordion-content">
+          ${item.text}
+        </div>
+      `;
+
+      const headerBtn = card.querySelector('.accordion-header');
+      headerBtn.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+
+      listEl.appendChild(card);
+    });
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    renderCommitments(e.target.value);
+  });
+
+  toggleAllBtn.addEventListener('click', () => {
+    allExpanded = !allExpanded;
+    const items = document.querySelectorAll('.accordion-item');
+    items.forEach(el => {
+      if (allExpanded) el.classList.add('active');
+      else el.classList.remove('active');
+    });
+    toggleAllBtn.textContent = allExpanded ? 'غلق الكل' : 'فتح الكل';
+  });
+
+  renderCommitments();
+</script>
+
+</body>
+</html>
